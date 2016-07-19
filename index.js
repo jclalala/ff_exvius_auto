@@ -3,7 +3,7 @@
 var later = require('later');
 var Mocha = require('mocha');
 
-var textSched = later.parse.text('every ' + 1 + ' min');
+var textSched = later.parse.text('every ' + 50 + ' min');
 later.setInterval(runCollectUpgradeItems, textSched);
 
 function runCollectUpgradeItems() {
