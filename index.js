@@ -7,8 +7,8 @@ var exec = require('exec');
 var sched = later.parse.recur().on(30).minute();
 later.setInterval(runCollectUpgradeItems, sched);
 
-console.log("Next run is scheduled at;" + later.schedule(sched).next(1));
 console.log("Init index.js at;" + new Date());
+console.log("Next run is scheduled at;" + later.schedule(sched).next(1));
 
 function runCollectUpgradeItems() {
   // exec npm test
@@ -20,7 +20,5 @@ function runCollectUpgradeItems() {
 
     console.log("Completed ff_exvius.js at;" + new Date());
     console.log("Next run is scheduled at;" + later.schedule(sched).next(1));
-
-    process.exit(code);
   });
 };
