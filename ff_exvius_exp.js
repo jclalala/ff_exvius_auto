@@ -4,37 +4,18 @@ require("./helpers/setup");
 
 var wd = require("wd"),
   actions = require("./helpers/actions"),
-  _ = require('underscore');
+  ffactions = require("./util/ff_actions");
 
 wd.addPromiseChainMethod('swipe', actions.swipe);
 
-describe("ff exvius", function () {
+describe("ff exvius exp", function () {
   this.timeout(600000);
   var driver;
   var allPassed = true;
 
   before(function () {
-    var serverConfig = {
-      host: 'localhost',
-      port: 4723
-    };
-    driver = wd.promiseChainRemote(serverConfig);
-    require("./helpers/logging").configure(driver);
-
-    var desired = {
-      browserName: '',
-      'appium-version': '1.3',
-      platformName: 'Android',
-      platformVersion: '4.4.2',
-      deviceName: 'Android Emulator',
-      noReset: true, // do not install APP,
-      newCommandTimeout: 600000, // next command timeout = 10 min
-      app: undefined // will be set later
-    };
-    desired.app = "/home/jeffreychang/com.square_enix.android_googleplay.FFBEWW-1.apk";
-    return driver
-      .init(desired)
-      .setImplicitWaitTimeout(3000);
+    driver = ffactions.initDriver();
+    return driver;
   });
 
   after(function () {
@@ -47,16 +28,11 @@ describe("ff exvius", function () {
   });
 
   it("should touch to start", function () {
-    var pressCenter = new wd.TouchAction();
-    pressCenter.press({x: 800, y: 1200}).release();
-    return driver.sleep(3000).performTouchAction(pressCenter).sleep(1000).performTouchAction(pressCenter).sleep(5000)
-      .elementById("com.square_enix.android_googleplay.FFBEWW:id/webviewHolder").click().sleep(30000); // TODO: possible to wait for some element?
+    return ffactions.byPassStart(driver);
   });
 
   it("should tap to 次元夾縫", function () {
-    var dimCrack = new wd.TouchAction();
-    dimCrack.press({x: 1525, y: 1920}).release();
-    return driver.performTouchAction(dimCrack).sleep(3000);
+    return ffactions.tapDimensionCrack(driver);
   });
 
   it("should tap to 慾望夾縫", function () {
@@ -65,9 +41,10 @@ describe("ff exvius", function () {
     return driver.performTouchAction(desireCrack).sleep(3000);
   });
 
-  it("should tap to 覺醒之間", function () {
+  it("should tap to 經驗之間", function () {
     var awakenRoom = new wd.TouchAction();
-    awakenRoom.press({x: 800, y: 1550}).release();
+    //awakenRoom.press({x: 800, y: 1550}).release(); // 覺醒之間
+    awakenRoom.press({x: 800, y: 2300}).release(); // 經驗之間
     return driver.performTouchAction(awakenRoom).sleep(3000);
   });
 

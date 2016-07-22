@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "mocha ff_exvius.js"
+    "test": "mocha ff_exvius_exp.js"
   },
   "devDependencies": {
     "chai": "^2.2.0",
@@ -19,8 +19,5 @@
     "moment": "^2.13.0"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "exec": "^0.2.1"
-  }
+  "license": "ISC"
 }
