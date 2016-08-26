@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "mocha ff_exvius_exp.js"
+    "exp": "mocha ff_exvius_exp.js",
+    "trust": "mocha ff_exvius_trust.js"
   },
   "devDependencies": {
     "chai": "^2.2.0",
@@ -19,5 +19,8 @@
     "moment": "^2.13.0"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "get-pixels": "^3.3.0"
+  }
 }

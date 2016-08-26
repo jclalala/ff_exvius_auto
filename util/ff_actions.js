@@ -37,6 +37,44 @@ const ff_actions = {
     var dimCrack = new wd.TouchAction();
     dimCrack.press({x: 1525, y: 1920}).release();
     return driver.performTouchAction(dimCrack).sleep(3000);
+  },
+  swipeAndTapNoPartner: function (driver) {
+    var swipeBottom = function () {
+      var opts = {
+        startX: 800, endX: 800,
+        startY: 1350, endY: 100,
+        duration: 1000
+      };
+      return driver.swipe(opts).swipe(opts).swipe(opts).swipe(opts).swipe(opts).swipe(opts).swipe(opts).swipe(opts).swipe(opts).swipe(opts);
+    };
+    var noFriend = new wd.TouchAction();
+    noFriend.press({x: 800, y: 2450}).release();
+    return swipeBottom().performTouchAction(noFriend).sleep(3000);
+  },
+  tapWorldMap: function (driver) {
+    var worldMap = new wd.TouchAction();
+    worldMap.press({x: 800, y: 1920}).release();
+    return driver.performTouchAction(worldMap).sleep(3000);
+  },
+  tapGranIsland: function (driver) {
+    var grandIsland = new wd.TouchAction();
+    grandIsland.press({x: 1050, y: 1050}).release();
+    return driver.performTouchAction(grandIsland).sleep(3000);
+  },
+  tapDepart: function (driver) {
+    var depart = new wd.TouchAction();
+    depart.press({x: 800, y: 2300}).release();
+    return driver.performTouchAction(depart).sleep(10000);
+  },
+  tapAuto: function (driver, sleep) {
+    var auto = new wd.TouchAction();
+    auto.press({x: 200, y: 2450}).release();
+    return driver.performTouchAction(auto).sleep(sleep); // let battle run for 3 min...
+  },
+  finishReward: function (driver) {
+    var next = new wd.TouchAction();
+    next.press({x: 800, y: 2300}).release();
+    return driver.performTouchAction(next).sleep(3000).performTouchAction(next).sleep(3000).performTouchAction(next).sleep(3000);
   }
 };
 
